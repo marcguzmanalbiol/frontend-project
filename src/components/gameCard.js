@@ -6,7 +6,8 @@ const GameCard = (props) => {
             <div className='detail_class'>Release Date: {props.released}</div>
             <div className='detail_class'>Rating: {props.rating} / 5 </div>
         </div>
-        <img src={props.image} alt={props.image}></img>
+        <img src={props.image} alt={props.image} width={100} height={100}></img>
+        <button>Details</button>
         </div>
     );
 }
