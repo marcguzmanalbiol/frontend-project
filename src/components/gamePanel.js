@@ -9,7 +9,7 @@ const GamePanel = () => {
   const [ordering, setOrdering] = useState("name");
   const [direction, setDirection] = useState("");
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('Mario');
+  const [search, setSearch] = useState('God of War');
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -58,6 +58,16 @@ const GamePanel = () => {
           </li>
         ))}
       </ul>
+      <button
+        onClick={() => {
+          setPage((prevState) => {
+            console.log(prevState);
+            return prevState - 1;
+          });
+        }}
+      >
+        Page Down
+      </button>
       <button
         onClick={() => {
           setPage((prevState) => {
