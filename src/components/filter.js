@@ -1,18 +1,65 @@
-const Filter = ({handleOrdering, handleDirection}) => {
+import "./filter.css";
+import InputText from "./inputText";
+import { DebounceInput } from "react-debounce-input";
+import {
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
+  makeStyles,
+  Container,
+  CssBaseline,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+}));
+
+const Filter = ({ handleOrdering, handleDirection, setPage, setSearch }) => {
+  const classes = useStyles();
+
   return (
-    <div>
-      <span>Order by: </span>
-      <select name='Ordering' id="choose_ordering" onChange={handleOrdering} defaultValue={''}>
-        <option value=''></option>
-        <option value="released">Release Date</option>
-        <option value="name">Name</option>
-        <option value="rating">Rating</option>
-      </select>
-      <select name='Direction' id="choose_direction" onChange={handleDirection} defaultValue={1}>
-        <option value={''}>Ascendent</option>
-        <option value={'-'}>Descendent</option>
-      </select>
-    </div>
+    <CssBaseline>
+      <Container>
+        <div className="filter-box">
+          <span>Order by: </span>
+        </div>
+        <div className="filter-box">
+          <FormControl className={classes.formControl}>
+            <InputLabel id="choose_ordering-label">Field</InputLabel>
+            <Select id="choose_ordering" onChange={handleOrdering}>
+              <MenuItem value="">None</MenuItem>
+              <MenuItem value="released">Release Date</MenuItem>
+              <MenuItem value="name">Name</MenuItem>
+              <MenuItem value="rating">Rating</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="filter-box">
+          <FormControl className={classes.formControl}>
+            <InputLabel>Ordering</InputLabel>
+            <Select onChange={handleDirection}>
+              <MenuItem value="">Ascendent</MenuItem>
+              <MenuItem value="-">Descendent</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        <div className="filter-box">
+          <DebounceInput
+            minLength={2}
+            debounceTimeout={300}
+            element={InputText}
+            onChange={(event) => {
+              setSearch(event.target.value);
+              setPage(1);
+            }}
+          />
+        </div>
+      </Container>
+    </CssBaseline>
   );
 };
 
