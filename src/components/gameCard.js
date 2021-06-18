@@ -1,16 +1,14 @@
 import DetailedView from "./detailedView";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { Button, Card } from "@material-ui/core";
+import "./gameCard.css";
 
 const GameCard = (props) => {
   
   const history = useHistory();
 
   const handleLink = (id) => {
-   
-    console.log(history.location);
     if (history.location.pathname === `/details/${id}`) {
-      console.log(history.location.pathname);
       history.push('/')
     } else {
       history.push(`/details/${props.id}`);
@@ -20,13 +18,15 @@ const GameCard = (props) => {
   return (
     <Card variant="outlined" className="game_card_container">
       <h2>{props.name}</h2>
-      <img src={props.image} alt={props.image} width={100} height={100}></img>
-      <Button onClick={() => handleLink(props.id)}>
-        Details
-      </Button>
+      <img src={props.image} alt={props.image}></img>
+      <div className='detailsButton'>
+      <Button onClick={() => handleLink(props.id)}>Details</Button>
+      </div>
+
+
       <Switch>
         <Route path={`/details/${props.id}`}>
-          <DetailedView released={props.released} rating={props.rating} />
+          <DetailedView released={props.released} rating={props.rating} id={props.id} />
         </Route>
         <Route path={`/`}/>  
       </Switch>

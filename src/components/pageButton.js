@@ -1,9 +1,17 @@
 import { Button } from "@material-ui/core";
+import "./pageButton.css";
 
 const PageButton = ({ handlePage, pageUpOrDown }) => {
   return (
-    <div>
-      <Button onClick={() => handlePage(pageUpOrDown)}>Page {pageUpOrDown===1 ? 'Up' : 'Down'} </Button>
+    <div className="button">
+      <Button
+        size="medium"
+        variant="outlined"
+        color="primary"
+        onClick={() => handlePage(pageUpOrDown)}
+      >
+        Page {pageUpOrDown === 1 ? "Up" : "Down"}{" "}
+      </Button>
     </div>
   );
 };

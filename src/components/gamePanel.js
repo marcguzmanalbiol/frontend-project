@@ -4,6 +4,7 @@ import Filter from "./filter";
 import PageButton from "./pageButton";
 import axios from "axios";
 import { BrowserRouter as Router } from "react-router-dom";
+import "./gamePanel.css";
 
 const GamePanel = () => {
   const [data, setData] = useState();
@@ -33,7 +34,7 @@ const GamePanel = () => {
   };
 
   const getOrderingText = (event) => {
-      /* return event.target.innerText */
+    /* return event.target.innerText */
   };
 
   const handlePage = (pageUpOrDown) => {
@@ -47,32 +48,34 @@ const GamePanel = () => {
       <Filter
         handleOrdering={handleOrdering}
         handleDirection={handleDirection}
-        setSearch = { setSearch }
-        setPage = { setPage }
+        setSearch={setSearch}
+        setPage={setPage}
       />
 
       <h1>List of Steam Games ordered by {getOrderingText()}</h1>
       <Router>
-        <ul style={{ listStyle: "none" }}>
-          {data?.map((item) => (
-            <li key={item.id}>
-              {
-                <div>
-                  <GameCard
-                    id={item.id}
-                    name={item.name}
-                    rating={item.rating}
-                    released={item.released}
-                    image={item.background_image}
-                  />
-                </div>
-              }
-            </li>
-          ))}
-        </ul>
+        <div className='gamesContainer'>
+          <ul style={{ listStyle: "none" }}>
+            {data?.map((item) => (
+              <li key={item.id}>
+                {
+                  <div>
+                    <GameCard
+                      id={item.id}
+                      name={item.name}
+                      rating={item.rating}
+                      released={item.released}
+                      image={item.background_image}
+                    />
+                  </div>
+                }
+              </li>
+            ))}
+          </ul>
+        </div>
       </Router>
 
-      <div>
+      <div className="pageButtons">
         <PageButton handlePage={handlePage} pageUpOrDown={-1} />
         <PageButton handlePage={handlePage} pageUpOrDown={1} />
       </div>

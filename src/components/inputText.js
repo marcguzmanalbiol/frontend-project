@@ -14,7 +14,7 @@ const InputText = ( props ) => {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField label="Search" onChange={props.onChange} />
+      <TextField label= {props.placeholder} onChange={props.onChange} />
     </form>
   );
 };

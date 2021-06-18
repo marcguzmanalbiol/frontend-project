@@ -1,0 +1,10 @@
+.pageButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.gamesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

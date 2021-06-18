@@ -56,6 +56,7 @@ const Filter = ({ handleOrdering, handleDirection, setPage, setSearch }) => {
               setSearch(event.target.value);
               setPage(1);
             }}
+            placeholder={'Search'}
           />
         </div>
       </Container>
