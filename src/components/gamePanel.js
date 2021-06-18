@@ -20,7 +20,6 @@ const GamePanel = () => {
           direction==='asc' ? '' : '-'
         }${ordering}`
       );
-      console.log(direction)
       setData(response.data.results);
     };
     fetchGames();
@@ -35,12 +34,7 @@ const GamePanel = () => {
     setDirection(() => event.target.value);
     setPage(1);
   };
-
-  const getOrderingText = (event) => {
-    console.log(event)
-    /* return event.target.innerText */
-  };
-
+  
   const handlePage = (pageUpOrDown) => {
     if (!(pageUpOrDown === -1 && page <= 1)) {
       setPage((prevState) => prevState + pageUpOrDown);

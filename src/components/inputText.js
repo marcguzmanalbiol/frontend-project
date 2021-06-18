@@ -9,12 +9,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InputText = ( props ) => {
+const InputText = (props) => {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField label= {props.placeholder} onChange={props.onChange} />
+      <TextField
+        label={props.placeholder}
+        onChange={props.onChange}
+        onKeyPress={(event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            console.log("Not today");
+          }
+        }}
+      />
     </form>
   );
 };
