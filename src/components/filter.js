@@ -25,13 +25,13 @@ const Filter = ({ handleOrdering, handleDirection, setPage, setSearch }) => {
     <CssBaseline>
       <Container>
         <div className="filter-box">
-          <span>Order by: </span>
+          <h3>Order by: </h3>
         </div>
         <div className="filter-box">
           <FormControl className={classes.formControl}>
             <InputLabel id="choose_ordering-label">Field</InputLabel>
             <Select id="choose_ordering" onChange={handleOrdering}>
-              <MenuItem value="">None</MenuItem>
+              <MenuItem value="" name='None'>None</MenuItem>
               <MenuItem value="released">Release Date</MenuItem>
               <MenuItem value="name">Name</MenuItem>
               <MenuItem value="rating">Rating</MenuItem>
@@ -42,8 +42,8 @@ const Filter = ({ handleOrdering, handleDirection, setPage, setSearch }) => {
           <FormControl className={classes.formControl}>
             <InputLabel>Ordering</InputLabel>
             <Select onChange={handleDirection}>
-              <MenuItem value="">Ascendent</MenuItem>
-              <MenuItem value="-">Descendent</MenuItem>
+              <MenuItem value='asc'>Ascendent</MenuItem>
+              <MenuItem value="desc">Descendent</MenuItem>
             </Select>
           </FormControl>
         </div>

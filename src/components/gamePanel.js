@@ -8,16 +8,19 @@ import "./gamePanel.css";
 
 const GamePanel = () => {
   const [data, setData] = useState();
-  const [ordering, setOrdering] = useState("");
-  const [direction, setDirection] = useState("");
+  const [ordering, setOrdering] = useState('');
+  const [direction, setDirection] = useState('asc');
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchGames = async () => {
       const response = await axios(
-        `https://api.rawg.io/api/games?key=1991a12e5c85475f9c3bde20fbb99760&page=${page}&search=${search}&stores=1&ordering=${direction}${ordering}`
+        `https://api.rawg.io/api/games?key=1991a12e5c85475f9c3bde20fbb99760&page=${page}&search=${search}&stores=1&ordering=${
+          direction==='asc' ? '' : '-'
+        }${ordering}`
       );
+      console.log(direction)
       setData(response.data.results);
     };
     fetchGames();
@@ -34,6 +37,7 @@ const GamePanel = () => {
   };
 
   const getOrderingText = (event) => {
+    console.log(event)
     /* return event.target.innerText */
   };
 
@@ -52,7 +56,7 @@ const GamePanel = () => {
         setPage={setPage}
       />
 
-      <h1>List of Steam Games ordered by {getOrderingText()}</h1>
+      <h1>List of Steam Games</h1>
       <Router>
         <div className='gamesContainer'>
           <ul style={{ listStyle: "none" }}>
