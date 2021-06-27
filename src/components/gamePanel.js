@@ -38,6 +38,7 @@ const GamePanel = () => {
   const handlePage = (pageUpOrDown) => {
     if (!(pageUpOrDown === -1 && page <= 1)) {
       setPage((prevState) => prevState + pageUpOrDown);
+      document.documentElement.scrollTop = 0;
     }
   };
 
